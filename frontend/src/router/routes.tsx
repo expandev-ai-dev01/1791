@@ -5,6 +5,8 @@ import { MainLayout } from '@/layouts/MainLayout';
 import { LoadingSpinner } from '@/core/components/LoadingSpinner';
 
 const HomePage = lazy(() => import('@/pages/Home'));
+const VehicleListPage = lazy(() => import('@/pages/VehicleList'));
+const VehicleDetailPage = lazy(() => import('@/pages/VehicleDetail'));
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +21,22 @@ export const router = createBrowserRouter([
             element: (
               <Suspense fallback={<LoadingSpinner />}>
                 <HomePage />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'vehicles',
+            element: (
+              <Suspense fallback={<LoadingSpinner />}>
+                <VehicleListPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'vehicle/:id',
+            element: (
+              <Suspense fallback={<LoadingSpinner />}>
+                <VehicleDetailPage />
               </Suspense>
             ),
           },
